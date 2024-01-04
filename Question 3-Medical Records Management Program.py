@@ -1,0 +1,76 @@
+# SEN5105 - Introduction to Programming - Python
+# Basic Medical Records Management Program
+# Developed by: Tayfun Guler
+
+class Patient:
+    """
+    The Patient class represents an individual's medical record, capturing essential
+    personal and emergency contact information.
+    """
+
+    def __init__(self, first_name, middle_name, last_name, address, city, state, zip_code, phone_number, emergency_contact_name, emergency_contact_phone):
+        """Initialize the patient's attributes."""
+        self.first_name = first_name
+        self.middle_name = middle_name
+        self.last_name = last_name
+        self.address = address
+        self.city = city
+        self.state = state
+        self.zip_code = zip_code
+        self.phone_number = phone_number
+        self.emergency_contact_name = emergency_contact_name
+        self.emergency_contact_phone = emergency_contact_phone
+
+    # Accessor and mutator methods would be defined here.
+
+
+class Procedure:
+    """
+    The Procedure class holds the details of medical procedures a patient has undergone,
+    such as the procedure's name, date, practitioner, and charges.
+    """
+
+    def __init__(self, procedure_name, date, practitioner, charges):
+        """Initialize the procedure's attributes."""
+        self.procedure_name = procedure_name
+        self.date = date
+        self.practitioner = practitioner
+        self.charges = charges
+
+    # Accessor and mutator methods would be defined here.
+
+
+# Running the program to manage patient and procedure records
+def main():
+    # Patient instance with the provided details
+    patient = Patient("Tayfun", "PC", "Guler", "Besiktas", "Istanbul", "Turkey", "34018", "533533533", "Doctor Who", "522522522")
+
+    # Procedures that the patient has undergone
+    procedures = [
+        Procedure("Physical Exam", "Today's date", "Dr. Irvine", 250.00),
+        Procedure("X-ray", "Today's date", "Dr. Jamison", 500.00),
+        Procedure("Blood test", "Today's date", "Dr. Smith", 200.00)
+    ]
+
+    # Displaying patient information
+    print("Patient Information:")
+    print(f"Name: {patient.first_name} {patient.middle_name} {patient.last_name}")
+    print(f"Address: {patient.address}, {patient.city}, {patient.state}, {patient.zip_code}")
+    print(f"Phone: {patient.phone_number}")
+    print(f"Emergency Contact: {patient.emergency_contact_name} - {patient.emergency_contact_phone}\n")
+
+    # Displaying each procedure's information and calculating the total charges
+    total_charges = 0
+    for index, procedure in enumerate(procedures, start=1):
+        print(f"Procedure {index}:")
+        print(f"Name: {procedure.procedure_name}")
+        print(f"Date: {procedure.date}")
+        print(f"Practitioner: {procedure.practitioner}")
+        print(f"Charge: ${procedure.charges:.2f}\n")
+        total_charges += procedure.charges
+
+    # Summarizing the total charges
+    print(f"The total charges for all procedures are: ${total_charges:.2f}")
+
+if __name__ == "__main__":
+    main()
